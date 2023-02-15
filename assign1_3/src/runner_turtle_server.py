@@ -10,6 +10,7 @@ def spawnNewTurtle():
 	spawnTurtle(turtle_x, turtle_y, 0, "runnerTurtle")
 
 def initScreen():
+    #INITscreen
 	clearStage()
 	spawnNewTurtle()
 
@@ -18,3 +19,5 @@ if __name__ == '__main__':
 	clearStage = rospy.ServiceProxy('/clear', Empty)
 	
 	initScreen()
+
+
