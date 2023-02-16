@@ -1,26 +1,3 @@
-'''import rospy
-import random
-from turtlesim.srv import *
-from turtlesim.msg import *
-from std_srvs.srv import *
-
-def spawnNewTurtle():
-	turtle_x = random.randint(0, 11)
-	turtle_y = random.randint(0, 11)
-	spawnTurtle(turtle_x, turtle_y, 0, "runnerTurtle")
-
-def initScreen():
-    #INITscreen
-	clearStage()
-	spawnNewTurtle()
-
-if __name__ == '__main__':
-	spawnTurtle = rospy.ServiceProxy('/spawn', Spawn)
-	clearStage = rospy.ServiceProxy('/clear', Empty)
-	
-	initScreen()
-'''
-
 #!/usr/bin/env python
 
 import rospy
@@ -41,7 +18,7 @@ class Runner:
         self.spawn_runner(7,1,0,"runner_turtle")
 
         self.linear_velocity = 1
-        
+
         self.velocity_publisher = rospy.Publisher('/runner_turtle/cmd_vel', Twist, queue_size=10)
         self.vel_msg = Twist()
 
@@ -64,9 +41,9 @@ class Runner:
         return math.sqrt((self.hunter_pose.x - self.runner_pose.x) ** 2 + (self.hunter_pose.y - self.runner_pose.y) ** 2)
     
     def run(self):
-
+        self.kill_runner('turtle1')
         self.vel_msg.linear.x = self.linear_velocity
-        
+
         while True:
             anglular_velocity = random.random()*2 - 1
 
@@ -75,22 +52,17 @@ class Runner:
             t0 = rospy.Time.now().to_sec()
             t1 = rospy.Time.now().to_sec()
 
-            
             while t1-t0 < 2:
                 t1=rospy.Time.now().to_sec()
                 self.velocity_publisher.publish(self.vel_msg)
-                
+
                 if self.runner_hunter_distance() < 1:
                     self.kill()
                     self.runner_pose.y = 100000
 
-            
-
-    
     def kill(self):
         self.kill_runner('runner_turtle')
         self.spawn_runner(random.random()*9,random.random()*9,0,"runner_turtle")
-        
 
 if __name__ == "__main__":
     rospy.init_node('run')

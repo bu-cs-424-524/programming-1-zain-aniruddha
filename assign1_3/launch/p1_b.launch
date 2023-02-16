@@ -1,0 +1,7 @@
+<launch>
+
+	<node pkg="turtlesim" name="sim" type="turtlesim_node"/>
+	<node pkg="assign1_3" name="runner" type="runner_turtle_server.py" />
+	<node pkg="assign1_3" name="hunter" type="hunter_turtle.py" />
+
+</launch>
