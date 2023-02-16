@@ -26,7 +26,7 @@ class Runner:
         self.runner_pose_subscriber = rospy.Subscriber('/runner/pose', Pose, self.update_runner_pose)
 
         self.hunter_pose = Pose(1, 1, 0, 0, 0)
-        self.runner_pose = Pose(7, 1, 0, 0, 0)
+        self.runner_pose = Pose(7, 5, 0, 0, 0)
 
         rospy.wait_for_service('/kill')
         self.kill_runner = rospy.ServiceProxy('/kill', Kill)

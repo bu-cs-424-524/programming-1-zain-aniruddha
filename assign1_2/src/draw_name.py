@@ -26,61 +26,6 @@ class DrawName:
         self.vel_msg.angular.x = 0
         self.vel_msg.angular.y = 0
 
-        # speed = 1
-        # distance = 3
-
-        '''
-        # Draw top straight line of z
-        vel_msg.linear.x = abs(speed)
-        t0 = rospy.Time.now().to_sec()
-        current_distance = 0
-
-        while (current_distance < distance):
-            velocity_publisher.publish(vel_msg)
-            t1 = rospy.Time.now().to_sec()
-            current_distance = speed * (t1 - t0)
-
-        vel_msg.linear.x = 0
-        velocity_publisher.publish(vel_msg)
-
-        # Rotate
-        speed = 50
-        angle = 135
-        angular_speed = speed * 2 * math.pi/360
-        relative_angle = angle * 2 * math.pi/360
-        vel_msg.angular.z = -abs(angular_speed)
-        t0 = rospy.Time.now().to_sec()
-        current_angle = 0
-
-        while (current_angle < relative_angle):
-            velocity_publisher.publish(vel_msg)
-            t1 = rospy.Time.now().to_sec()
-            current_angle = angular_speed * (t1 - t0)
-
-        vel_msg.angular.z = 0
-        velocity_publisher.publish(vel_msg)
-        
-        # Draw diagonal line of Z
-        speed = 1
-        distance = 3
-        
-        vel_msg.linear.x = abs(speed)
-        vel_msg.linear.y = 0
-        t0 = rospy.Time.now().to_sec()
-        current_distance = 0
-
-        while (current_distance < distance):
-            velocity_publisher.publish(vel_msg)
-            t1 = rospy.Time.now().to_sec()
-            current_distance = speed * (t1 - t0)
-
-        vel_msg.linear.x = 0
-        vel_msg.linear.y = 0
-        velocity_publisher.publish(vel_msg)
-
-        # Rotate
-        speed = 50 '''
-
     def reset_vel_msg(self):
         self.vel_msg.linear.x = 0
         self.vel_msg.linear.y = 0
@@ -159,3 +104,5 @@ if __name__ == '__main__':
 
     draw_name.rotate(speed=rotation_speed, angle=70, rotation='anti-clockwise')
     draw_name.move_straight(x_speed=travel_speed, y_speed=0, x_distance=1.5, y_distance=0)
+
+    rospy.spin()
