@@ -1,0 +1,6 @@
+<launch>
+
+	<node pkg="turtlesim" name="sim" type="turtlesim_node"/>
+	<node pkg="assign1_2" name="draw_name" type="draw_name.py" />
+
+</launch>
