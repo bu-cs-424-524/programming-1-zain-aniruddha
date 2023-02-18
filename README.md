@@ -1,3 +1,12 @@
+For Assignement 1_2
+Zain write the code for Z letter
+Aniruddha write the code for A letter
+
+For Assignment 1_3
+Aniruddha developed the runner script
+Zain developed the hunter script
+
+
 Programming Assignment 1
 
 To launch Part(a), run:
